@@ -38,7 +38,7 @@ public class ItemSelection extends JFrame {
 
   public ItemSelection() {
     this.setTitle("Items");
-    this.setSize(400, 200);
+    this.setSize(800, 400);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     bindActions();

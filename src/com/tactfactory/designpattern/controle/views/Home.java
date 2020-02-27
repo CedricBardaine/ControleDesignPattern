@@ -29,7 +29,7 @@ public class Home extends JFrame {
   public Home() {
 
     this.setTitle("Home");
-    this.setSize(400, 200);
+    this.setSize(800, 400);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     bindActions();

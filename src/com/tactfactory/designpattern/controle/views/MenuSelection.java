@@ -31,7 +31,7 @@ public class MenuSelection extends JFrame {
 
   public MenuSelection() {
     this.setTitle("Menu");
-    this.setSize(400, 200);
+    this.setSize(800, 400);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     bindActions();
