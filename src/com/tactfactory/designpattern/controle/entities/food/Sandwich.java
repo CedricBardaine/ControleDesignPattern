@@ -4,23 +4,26 @@ import java.text.DecimalFormat;
 
 import com.tactfactory.designpattern.controle.entities.Item;
 import com.tactfactory.designpattern.controle.entities.Packing;
+import com.tactfactory.designpattern.controle.entities.packs.CardboardBox;
 import com.tactfactory.designpattern.controle.exceptions.InvalidSizeItem;
 
 public abstract class Sandwich implements Item {
 	private String name ; 
 	private float price ; 
 //	private String size ;
+	private Packing pack = new CardboardBox() ; 
 	
 	
 	@Override
 	public String name() {
 		return this.name ; 
 	}
+	
 	@Override
 	public Packing packing() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.pack ; 
 	}
+	
 //	/**
 //	 * @deprecated was based on the fact it could have a size. But no.
 //	 * @return the price with on the ratio of its size. 
@@ -58,6 +61,7 @@ public abstract class Sandwich implements Item {
 	public void setPrice(float price) { this.price = price; }
 //	public String getSize() { return size; }
 //	public void setSize(String size) { this.size = size; }
+	public void setPack(Packing pack) { this.pack = pack; }
 	
 	
 	

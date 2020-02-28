@@ -1,5 +1,7 @@
 package com.tactfactory.designpattern.controle.entities.food;
 
+import com.tactfactory.designpattern.controle.entities.Packing;
+
 public class Drink_CocaCola extends Drink {
 
 	public Drink_CocaCola(String newSize) {
@@ -25,4 +27,5 @@ public class Drink_CocaCola extends Drink {
 			break;
 		}
 	}
+
 }

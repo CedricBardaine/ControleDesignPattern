@@ -1,12 +1,14 @@
 package com.tactfactory.designpattern.controle.entities.food;
 
+import com.tactfactory.designpattern.controle.entities.Packing;
+
 /**
  * This class represents a Dr Pepper drink. 
  * "Dr Pepper, a drink of intellectuals reserved for elected." _ O. R.
  * @author cedri
  * @version 1.0
  */
-public class Drink_DrPepper extends Drink {
+public class Drink_DrPepper extends Drink { 
 
 	public Drink_DrPepper(String newSize) {
 		setName("Coca Cola");

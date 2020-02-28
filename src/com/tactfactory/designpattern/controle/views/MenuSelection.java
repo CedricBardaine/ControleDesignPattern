@@ -74,7 +74,7 @@ public class MenuSelection extends JFrame {
 
   private void bindActions() {
 
-    // Actions code here
+    // Actions code here 
 //    JButton.addActionListener(new ActionListener() {
 //
 //      @Override
@@ -82,6 +82,7 @@ public class MenuSelection extends JFrame {
 //        // Do something
 //      }
 //    });
+	  
 
     validate.addActionListener(new ActionListener() {
 

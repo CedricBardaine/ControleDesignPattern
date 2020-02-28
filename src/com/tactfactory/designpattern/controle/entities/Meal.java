@@ -36,5 +36,7 @@ public class Meal {
       System.out.println(", Price : " + item.price());
     }
   }
+  
+  public List<Item> getItems() { return items; }
 }
 

@@ -2,12 +2,14 @@ package com.tactfactory.designpattern.controle.entities.food;
 
 import com.tactfactory.designpattern.controle.entities.Item;
 import com.tactfactory.designpattern.controle.entities.Packing;
+import com.tactfactory.designpattern.controle.entities.packs.CardboardCase;
 
 public abstract class Accompaniment implements Item {
 
 	private String name ;
 	private float price ;
 	private String size ;
+	private Packing pack = new CardboardCase() ; 
 
 
 	@Override
@@ -16,8 +18,7 @@ public abstract class Accompaniment implements Item {
 	}
 	@Override
 	public Packing packing() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.pack ; 
 	}
 	
 	@Override

@@ -4,22 +4,24 @@ import java.text.DecimalFormat;
 
 import com.tactfactory.designpattern.controle.entities.Item;
 import com.tactfactory.designpattern.controle.entities.Packing;
+import com.tactfactory.designpattern.controle.entities.packs.PaperCup;
 import com.tactfactory.designpattern.controle.exceptions.InvalidSizeItem;
 
 public abstract class Drink implements Item {
 	private String name ;
 	private float price ;
 	private String size ;
+	private Packing pack = new PaperCup() ; 
 
 
 	@Override
 	public String name() {
 		return this.name ; 
 	}
+	
 	@Override
 	public Packing packing() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.pack ; 
 	}
 	
 	@Override
@@ -39,6 +41,7 @@ public abstract class Drink implements Item {
 		else 
 			System.err.println("wrong new size !!");
 	}
+	public void setPack(Packing pack) { this.pack = pack; }
 
 
 
