@@ -8,18 +8,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.tactfactory.designpattern.controle.builders.MealBuilder;
 import com.tactfactory.designpattern.controle.entities.Meal;
+import com.tactfactory.designpattern.controle.entities.food.Sandwich_BigMac;
+import com.tactfactory.designpattern.controle.entities.food.Sandwich_RoyalDeluxe;
 
 public class MenuSelection extends JFrame {
 
   private Home home;
   private Meal meal;
+  
+  private MealBuilder theMealBuilder ; 
 
   private JButton bestOf = new JButton("BestOf");
   private JButton maxiBestOf = new JButton("MaxiBestOf");
 
-  private JButton burger1 = new JButton("Burger1");
-  private JButton burger2 = new JButton("Burger2");
+  private JButton burger1 = new JButton("Big Mac");
+  private JButton burger2 = new JButton("Royal Deluxe");
 
   private JButton drink1 = new JButton("Drink1");
   private JButton drink2 = new JButton("Drink2");
@@ -82,6 +87,40 @@ public class MenuSelection extends JFrame {
 //        // Do something
 //      }
 //    });
+	  
+	  bestOf.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("- vous preparez maintenant un nouveau menu best of.");
+			theMealBuilder = new MealBuilder();
+			theMealBuilder.prepareBestOf() ;
+			}
+	});
+	  
+	  burger1.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if ( theMealBuilder == null )
+				System.out.println("- sélectionnez d'abord un menu");
+			else {
+			Sandwich_BigMac newBurger = new Sandwich_BigMac() ; 
+			theMealBuilder.addItem(newBurger) ; 
+//			System.out.println("- votre menu best-of contient un "+ newBurger.name() );
+			}
+		}
+	});
+	  burger2.addActionListener(new ActionListener() {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  if ( theMealBuilder == null )
+				  System.out.println("- ! sélectionnez d'abord un menu");
+			  else {
+				  Sandwich_RoyalDeluxe newBurger = new Sandwich_RoyalDeluxe() ; 
+				  theMealBuilder.addItem(newBurger) ; 
+//				  System.out.println("- votre menu best-of contient un "+ newBurger.name() );
+			  }
+		  }
+	  });
 	  
 
     validate.addActionListener(new ActionListener() {

@@ -1,5 +1,7 @@
 package com.tactfactory.designpattern.controle.entities.food;
 
+import com.tactfactory.designpattern.controle.builders.MealBuilder;
+
 public class Accompaniment_potatoes extends Accompaniment{
 	public Accompaniment_potatoes(String newSize) {
 		setName("Potatoes");
@@ -24,4 +26,9 @@ public class Accompaniment_potatoes extends Accompaniment{
 			break;
 		}
 	}
+	
+	/**
+	 * Should not be used, only for class checking (in {@link MealBuilder}) 
+	 */
+	public Accompaniment_potatoes() {}
 }

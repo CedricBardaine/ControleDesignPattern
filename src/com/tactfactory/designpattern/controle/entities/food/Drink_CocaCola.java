@@ -1,5 +1,6 @@
 package com.tactfactory.designpattern.controle.entities.food;
 
+import com.tactfactory.designpattern.controle.builders.MealBuilder;
 import com.tactfactory.designpattern.controle.entities.Packing;
 
 public class Drink_CocaCola extends Drink {
@@ -27,5 +28,10 @@ public class Drink_CocaCola extends Drink {
 			break;
 		}
 	}
+	
+	/**
+	 * Should not be used, only for class checking (in {@link MealBuilder}) 
+	 */
+	public Drink_CocaCola() {}
 
 }

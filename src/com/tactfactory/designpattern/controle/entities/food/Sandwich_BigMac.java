@@ -5,7 +5,7 @@ import com.tactfactory.designpattern.controle.entities.Packing;
 public class Sandwich_BigMac extends Sandwich {
 	
 	public Sandwich_BigMac() {
-		setName("Big Mac") ;
+		this.setName("Big Mac") ;
 		setPrice((float) 7.5);
 	}
 
