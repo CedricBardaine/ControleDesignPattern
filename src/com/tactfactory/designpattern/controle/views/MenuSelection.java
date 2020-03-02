@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 
 import com.tactfactory.designpattern.controle.builders.MealBuilder;
 import com.tactfactory.designpattern.controle.entities.Meal;
+import com.tactfactory.designpattern.controle.entities.food.Accompaniment_fries;
+import com.tactfactory.designpattern.controle.entities.food.Accompaniment_potatoes;
+import com.tactfactory.designpattern.controle.entities.food.Drink_CocaCola;
+import com.tactfactory.designpattern.controle.entities.food.Drink_DrPepper;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich_BigMac;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich_RoyalDeluxe;
 
@@ -26,8 +30,8 @@ public class MenuSelection extends JFrame {
   private JButton burger1 = new JButton("Big Mac");
   private JButton burger2 = new JButton("Royal Deluxe");
 
-  private JButton drink1 = new JButton("Drink1");
-  private JButton drink2 = new JButton("Drink2");
+  private JButton drink1 = new JButton("Coca Cola");
+  private JButton drink2 = new JButton("Dr Pepper");
 
   private JButton fries = new JButton("Fries");
   private JButton potatoes = new JButton("Potatoes");
@@ -97,6 +101,15 @@ public class MenuSelection extends JFrame {
 			}
 	});
 	  
+	  maxiBestOf.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("- vous preparez maintenant un nouveau menu MAXI best of.");
+			theMealBuilder = new MealBuilder();
+			theMealBuilder.prepareMaxiBestOf() ;
+			}
+	});
+	  
 	  burger1.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -109,6 +122,7 @@ public class MenuSelection extends JFrame {
 			}
 		}
 	});
+	  
 	  burger2.addActionListener(new ActionListener() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
@@ -122,11 +136,60 @@ public class MenuSelection extends JFrame {
 		  }
 	  });
 	  
+	  drink1.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			 if ( theMealBuilder == null )
+				  System.out.println("- ! sélectionnez d'abord un menu");
+			  else {
+				  Drink_CocaCola newDrink = new Drink_CocaCola(theMealBuilder.getMealSize()) ; 
+				  theMealBuilder.addItem(newDrink) ; 
+			  }
+			 }
+	  });
 
-    validate.addActionListener(new ActionListener() {
+	  drink2.addActionListener(new ActionListener() {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  if ( theMealBuilder == null )
+				  System.out.println("- ! sélectionnez d'abord un menu");
+			  else {
+				  Drink_DrPepper newDrink = new Drink_DrPepper(theMealBuilder.getMealSize()) ; 
+				  theMealBuilder.addItem(newDrink) ; 
+			  }
+		  }
+	  });
+	  
+	  fries.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			 if ( theMealBuilder == null )
+				  System.out.println("- ! sélectionnez d'abord un menu");
+			  else {
+				  Accompaniment_fries newAcc = new Accompaniment_fries(theMealBuilder.getMealSize()) ; 
+				  theMealBuilder.addItem(newAcc) ; 
+			  }
+		}
+	});
+	  
+	  potatoes.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 if ( theMealBuilder == null )
+					  System.out.println("- ! sélectionnez d'abord un menu");
+				  else {
+					  Accompaniment_potatoes newAcc = new Accompaniment_potatoes(theMealBuilder.getMealSize()) ; 
+					  theMealBuilder.addItem(newAcc) ; 
+				  }
+			}
+		});
 
+
+	  validate.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+    	  if (! theMealBuilder.containsAllItems())
+    		  System.out.println("- ! attention, votre menu est incomplet mais a quand même été validé");
         home.setMeal(meal);
         home.setVisible(true);
         MenuSelection.this.dispose();

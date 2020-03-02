@@ -11,6 +11,7 @@ import com.tactfactory.designpattern.controle.entities.food.Drink_DrPepper;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich_BigMac;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich_RoyalDeluxe;
+import com.tactfactory.designpattern.controle.views.MenuSelection;
 
 public class MealBuilder {
 	
@@ -87,6 +88,54 @@ public class MealBuilder {
 		}
 		return contains ; 
 	}
+	
+	/**
+	 * Can be used in {@link MenuSelection} to inform the user about he didn't make a correct menu. 
+	 * @return true if the meal contains all kind of items (the menu is correct). 
+	 */
+	public boolean containsAllItems() {
+		boolean theMealContainsASandwich = false ;  
+		boolean theMealContainsADrink = false ;
+		boolean theMealContainsAAccompaniment = false ;
+		boolean ret = false ; 
+
+		if ( checkIfItContainsInterface(new Sandwich_RoyalDeluxe()) 
+				|| checkIfItContainsInterface(new Sandwich_BigMac() ) )
+			theMealContainsASandwich = true ;
+
+		if ( checkIfItContainsInterface( new Drink_CocaCola() ) 
+				|| checkIfItContainsInterface(new Drink_DrPepper() ) )
+			theMealContainsADrink = true ;
+
+		if ( checkIfItContainsInterface( new Accompaniment_fries() ) 
+				|| checkIfItContainsInterface(new Accompaniment_potatoes() ) )
+			theMealContainsAAccompaniment = true ;
+
+		if (theMealContainsASandwich && theMealContainsADrink && theMealContainsAAccompaniment)
+			ret = true ;
+		else 
+			ret = false ;
+		
+		return ret ;
+	}
+
+	/**
+	 * Shrunk version of containsAllItems() 
+	 * @return true if the meal contains all kind of items (the menu is correct). 
+	 */
+	public boolean containsAllItems2() {
+		return (
+				(checkIfItContainsInterface(new Sandwich_RoyalDeluxe())
+						|| checkIfItContainsInterface(new Sandwich_BigMac()))
+				&& (checkIfItContainsInterface(new Drink_CocaCola())
+						|| checkIfItContainsInterface(new Drink_DrPepper()))
+				&& (checkIfItContainsInterface(new Accompaniment_fries())
+						|| checkIfItContainsInterface(new Accompaniment_potatoes()))
+				);
+	}
+
+	
+	
 
 	public Meal build() {
 		for (Item anItem : theMeal.getItems()) {

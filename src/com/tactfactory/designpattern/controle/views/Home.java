@@ -49,7 +49,6 @@ public class Home extends JFrame {
 
   private void bindActions() {
     menus.addActionListener(new ActionListener() {
-
       @Override
       public void actionPerformed(ActionEvent e) {
         MenuSelection menuSelection = new MenuSelection();
@@ -58,7 +57,6 @@ public class Home extends JFrame {
     });
 
     addItem.addActionListener(new ActionListener() {
-
       @Override
       public void actionPerformed(ActionEvent e) {
         ItemSelection itemSelection = new ItemSelection();
@@ -67,7 +65,6 @@ public class Home extends JFrame {
     });
 
     validate.addActionListener(new ActionListener() {
-
       @Override
       public void actionPerformed(ActionEvent e) {
         DetailsSelection detailsSelection = new DetailsSelection();
