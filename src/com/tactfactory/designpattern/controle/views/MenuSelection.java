@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import com.tactfactory.designpattern.controle.builders.MealBuilder;
 import com.tactfactory.designpattern.controle.entities.Meal;
@@ -24,8 +25,8 @@ public class MenuSelection extends JFrame {
   
   private MealBuilder theMealBuilder ; 
 
-  private JButton bestOf = new JButton("BestOf");
-  private JButton maxiBestOf = new JButton("MaxiBestOf");
+  private JButton bestOf = new JButton("Best Of");
+  private JButton maxiBestOf = new JButton("Maxi Best Of");
 
   private JButton burger1 = new JButton("Big Mac");
   private JButton burger2 = new JButton("Royal Deluxe");
@@ -37,6 +38,8 @@ public class MenuSelection extends JFrame {
   private JButton potatoes = new JButton("Potatoes");
 
   private JButton validate = new JButton("Valider");
+  
+  private JTextField TF_infos = new JTextField() ; 
 
   public MenuSelection() {
     this.setTitle("Menu");
@@ -78,6 +81,7 @@ public class MenuSelection extends JFrame {
     container.add(containerAccompaniment);
 
     container.add(validate);
+    container.add(TF_infos) ; 
     this.setContentPane(container);
   }
 
@@ -95,7 +99,8 @@ public class MenuSelection extends JFrame {
 	  bestOf.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("- vous preparez maintenant un nouveau menu best of.");
+			System.out.println("- Vous preparez maintenant un nouveau menu best of");
+			TF_infos.setText(" Vous preparez maintenant un nouveau menu best of");
 			theMealBuilder = new MealBuilder();
 			theMealBuilder.prepareBestOf() ;
 			}
@@ -104,7 +109,8 @@ public class MenuSelection extends JFrame {
 	  maxiBestOf.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("- vous preparez maintenant un nouveau menu MAXI best of.");
+			System.out.println("- Vous preparez maintenant un nouveau menu MAXI best of");
+			TF_infos.setText(" Vous preparez maintenant un nouveau menu MAXI best of");
 			theMealBuilder = new MealBuilder();
 			theMealBuilder.prepareMaxiBestOf() ;
 			}
@@ -113,12 +119,13 @@ public class MenuSelection extends JFrame {
 	  burger1.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if ( theMealBuilder == null )
-				System.out.println("- sélectionnez d'abord un menu");
+			if ( theMealBuilder == null ) {
+				System.out.println("- ! selectionnez d'abord un menu");
+				TF_infos.setText(" ! Selectionnez d'abord un menu");
+			}
 			else {
 			Sandwich_BigMac newBurger = new Sandwich_BigMac() ; 
 			theMealBuilder.addItem(newBurger) ; 
-//			System.out.println("- votre menu best-of contient un "+ newBurger.name() );
 			}
 		}
 	});
@@ -126,12 +133,13 @@ public class MenuSelection extends JFrame {
 	  burger2.addActionListener(new ActionListener() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  if ( theMealBuilder == null )
-				  System.out.println("- ! sélectionnez d'abord un menu");
+			  if ( theMealBuilder == null ) {
+				  System.out.println("- ! selectionnez d'abord un menu");
+				  TF_infos.setText(" ! Selectionnez d'abord un menu");
+			  }
 			  else {
 				  Sandwich_RoyalDeluxe newBurger = new Sandwich_RoyalDeluxe() ; 
 				  theMealBuilder.addItem(newBurger) ; 
-//				  System.out.println("- votre menu best-of contient un "+ newBurger.name() );
 			  }
 		  }
 	  });
@@ -139,8 +147,10 @@ public class MenuSelection extends JFrame {
 	  drink1.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			 if ( theMealBuilder == null )
-				  System.out.println("- ! sélectionnez d'abord un menu");
+			 if ( theMealBuilder == null ) {
+				 System.out.println("- ! selectionnez d'abord un menu");
+				 TF_infos.setText(" ! Selectionnez d'abord un menu");
+			 }
 			  else {
 				  Drink_CocaCola newDrink = new Drink_CocaCola(theMealBuilder.getMealSize()) ; 
 				  theMealBuilder.addItem(newDrink) ; 
@@ -151,8 +161,10 @@ public class MenuSelection extends JFrame {
 	  drink2.addActionListener(new ActionListener() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  if ( theMealBuilder == null )
-				  System.out.println("- ! sélectionnez d'abord un menu");
+			  if ( theMealBuilder == null ) {
+				  System.out.println("- ! selectionnez d'abord un menu");
+				  TF_infos.setText(" ! Selectionnez d'abord un menu");
+			  }
 			  else {
 				  Drink_DrPepper newDrink = new Drink_DrPepper(theMealBuilder.getMealSize()) ; 
 				  theMealBuilder.addItem(newDrink) ; 
@@ -163,8 +175,10 @@ public class MenuSelection extends JFrame {
 	  fries.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			 if ( theMealBuilder == null )
-				  System.out.println("- ! sélectionnez d'abord un menu");
+			 if ( theMealBuilder == null ) {
+				 System.out.println("- ! selectionnez d'abord un menu");
+				 TF_infos.setText(" ! Selectionnez d'abord un menu");
+			 }
 			  else {
 				  Accompaniment_fries newAcc = new Accompaniment_fries(theMealBuilder.getMealSize()) ; 
 				  theMealBuilder.addItem(newAcc) ; 
@@ -175,8 +189,10 @@ public class MenuSelection extends JFrame {
 	  potatoes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				 if ( theMealBuilder == null )
-					  System.out.println("- ! sélectionnez d'abord un menu");
+				 if ( theMealBuilder == null ) {
+					 System.out.println("- ! selectionnez d'abord un menu");
+					 TF_infos.setText(" ! Selectionnez d'abord un menu");
+				 }
 				  else {
 					  Accompaniment_potatoes newAcc = new Accompaniment_potatoes(theMealBuilder.getMealSize()) ; 
 					  theMealBuilder.addItem(newAcc) ; 
@@ -186,15 +202,26 @@ public class MenuSelection extends JFrame {
 
 
 	  validate.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-    	  if (! theMealBuilder.containsAllItems())
-    		  System.out.println("- ! attention, votre menu est incomplet mais a quand même été validé");
-        home.setMeal(meal);
-        home.setVisible(true);
-        MenuSelection.this.dispose();
-      }
-    });
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  try {
+				  if (! theMealBuilder.containsAllItems())
+					  System.out.println("- ! attention, votre menu est incomplet et n'a pas ete valide");
+				  else {
+					  System.out.println("- menu valide");
+					  meal = theMealBuilder.build() ; 
+				  }
+			  } catch (NullPointerException ex) {
+				  ex.getMessage();
+				  System.err.println("surement : le builder n a pas ete initialise avec le bouton BestOf ou MaxiBestOf");
+			  }
+			  finally {
+				  home.setMeal(meal);
+				  home.setVisible(true);
+				  MenuSelection.this.dispose();
+			  }
+		  }
+	  });
   }
 
   public void setHome(Home home) {
