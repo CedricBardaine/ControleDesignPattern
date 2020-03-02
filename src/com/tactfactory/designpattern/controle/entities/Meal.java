@@ -29,14 +29,32 @@ public class Meal {
   }
 
   public void showItems() {
-
     for (Item item : items) {
       System.out.print("Item : " + item.name());
       System.out.print(", Packing : " + item.packing().pack());
       System.out.println(", Price : " + item.price());
     }
   }
+  public String getShowItems() {
+	  String ret = "" ; 
+	  for (Item item : items) {
+		  ret += "Item : " + item.name() +"\r\n"
+				  + ", Packing : " + item.packing().pack() +"\r\n"
+				  + ", Price : " + item.price() +"\r\n" ;
+	  }
+	  return ret ; 
+  }
   
+  public float getTotalPrice() {
+	  float ret = 0 ; 
+	  
+	  for (Item item : items) {
+		ret += item.price() ;
+	}
+	  
+	  return ret ; 
+  }
+
   public List<Item> getItems() { return items; }
 }
 

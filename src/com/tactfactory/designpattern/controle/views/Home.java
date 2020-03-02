@@ -69,6 +69,8 @@ public class Home extends JFrame {
       public void actionPerformed(ActionEvent e) {
         DetailsSelection detailsSelection = new DetailsSelection();
         detailsSelection.setHome(Home.this);
+        
+
       }
     });
   }
