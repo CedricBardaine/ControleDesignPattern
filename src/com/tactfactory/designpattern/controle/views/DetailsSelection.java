@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -37,7 +38,7 @@ public class DetailsSelection extends JFrame {
   private void addButtons() {
     JPanel container = new JPanel();
     container.setLayout(new GridLayout(3, 1));
-    container.add(commandDetails);
+    container.add(new JScrollPane(commandDetails) );
     container.add(price);
     container.add(validate);
     this.setContentPane(container);
