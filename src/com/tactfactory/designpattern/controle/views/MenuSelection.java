@@ -27,6 +27,7 @@ public class MenuSelection extends JFrame {
 
   private JButton bestOf = new JButton("Best Of");
   private JButton maxiBestOf = new JButton("Maxi Best Of");
+  private JButton golden = new JButton("Golden");
 
   private JButton burger1 = new JButton("Big Mac");
   private JButton burger2 = new JButton("Royal Deluxe");
@@ -60,6 +61,7 @@ public class MenuSelection extends JFrame {
     containerType.setLayout(new GridLayout(1, 2));
     containerType.add(bestOf);
     containerType.add(maxiBestOf);
+    containerType.add(golden) ; 
     container.add(containerType);
 
     JPanel containerBurger = new JPanel();
@@ -99,8 +101,8 @@ public class MenuSelection extends JFrame {
 	  bestOf.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("- Vous preparez maintenant un nouveau menu best of");
-			TF_infos.setText(" Vous preparez maintenant un nouveau menu best of");
+			System.out.println("- Vous preparez maintenant un nouveau menu Best Of");
+			TF_infos.setText(" Vous preparez maintenant un nouveau menu Best Of");
 			theMealBuilder = new MealBuilder();
 			theMealBuilder.prepareBestOf() ;
 			}
@@ -109,12 +111,22 @@ public class MenuSelection extends JFrame {
 	  maxiBestOf.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("- Vous preparez maintenant un nouveau menu MAXI best of");
-			TF_infos.setText(" Vous preparez maintenant un nouveau menu MAXI best of");
+			System.out.println("- Vous preparez maintenant un nouveau menu MAXI Best Of");
+			TF_infos.setText(" Vous preparez maintenant un nouveau menu MAXI Best Of");
 			theMealBuilder = new MealBuilder();
 			theMealBuilder.prepareMaxiBestOf() ;
 			}
 	});
+	  
+	  golden.addActionListener(new ActionListener() {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  System.out.println("- Vous preparez maintenant un nouveau menu Golden");
+			  TF_infos.setText(" Vous preparez maintenant un nouveau menu Golden");
+			  theMealBuilder = new MealBuilder();
+			  theMealBuilder.prepareGolden() ;
+		  }
+	  });
 	  
 	  burger1.addActionListener(new ActionListener() {
 		@Override
@@ -213,7 +225,7 @@ public class MenuSelection extends JFrame {
 				  }
 			  } catch (NullPointerException ex) {
 				  ex.getMessage();
-				  System.err.println("surement : le builder n a pas ete initialise avec le bouton BestOf ou MaxiBestOf");
+				  System.err.println("surement : le builder n a pas ete initialise avec le bouton de menu");
 			  }
 			  finally {
 				  home.setMeal(meal);

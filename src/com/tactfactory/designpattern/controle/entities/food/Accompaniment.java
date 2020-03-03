@@ -36,7 +36,7 @@ public abstract class Accompaniment implements Item {
 		if (size == "petit" || size == "moyen" || size == "grand")
 			this.size = size; 
 		else 
-			System.err.println("wrong new size !!");
+			System.err.println("wrong new size !!!");
 	}
 
 }
