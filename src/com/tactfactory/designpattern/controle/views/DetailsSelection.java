@@ -21,6 +21,7 @@ public class DetailsSelection extends JFrame {
   private Meal meal;
 
   private JButton validate = new JButton("Retour");
+  private JButton clean = new JButton("Tout annuler");
   private JTextArea commandDetails = new JTextArea();
   private JTextField price = new JTextField();
 
@@ -38,9 +39,16 @@ public class DetailsSelection extends JFrame {
   private void addButtons() {
     JPanel container = new JPanel();
     container.setLayout(new GridLayout(3, 1));
+    JPanel containerBtnsAction = new JPanel();
+    containerBtnsAction.setLayout(new GridLayout(1,2));
+
+    containerBtnsAction.add(clean);
+    containerBtnsAction.add(validate);
+    
     container.add(new JScrollPane(commandDetails) );
     container.add(price);
-    container.add(validate);
+    container.add(containerBtnsAction);
+    
     this.setContentPane(container);
   }
 
@@ -56,7 +64,6 @@ public class DetailsSelection extends JFrame {
 //    });
 
     validate.addActionListener(new ActionListener() {
-
       @Override
       public void actionPerformed(ActionEvent e) {
         home.setMeal(meal);
@@ -64,6 +71,18 @@ public class DetailsSelection extends JFrame {
         DetailsSelection.this.dispose();
       }
     });
+    
+    clean.addActionListener(new ActionListener() {
+    	@Override
+    	public void actionPerformed(ActionEvent e) {
+    		meal = new Meal() ; 
+    		home.setMeal(meal);
+    		home.setVisible(true);
+    		DetailsSelection.this.dispose();
+    	}
+    });
+    
+    
   }
   
   public void setDetails() {
