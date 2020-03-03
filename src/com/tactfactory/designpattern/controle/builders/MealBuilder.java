@@ -11,6 +11,10 @@ import com.tactfactory.designpattern.controle.entities.food.Drink_DrPepper;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich_BigMac;
 import com.tactfactory.designpattern.controle.entities.food.Sandwich_RoyalDeluxe;
+import com.tactfactory.designpattern.controle.entities.toy.ToyFemale;
+import com.tactfactory.designpattern.controle.entities.toy.ToyMale;
+import com.tactfactory.designpattern.controle.entities.toy.attributes.Gender;
+import com.tactfactory.designpattern.controle.entities.toy.factory.ToyFactory;
 import com.tactfactory.designpattern.controle.views.MenuSelection;
 
 public class MealBuilder {
@@ -35,6 +39,17 @@ public class MealBuilder {
 	public MealBuilder prepareGolden() {
 		this.mealSize = "grand" ;
 		this.isGolden = true ;
+		return this ; 
+	}
+	public MealBuilder prepareHappy() {
+		ToyFactory tf = new ToyFactory() ; 
+		
+		this.mealSize = "petit" ; 
+		if (Math.round( Math.random() ) == 1) 
+			this.theMeal.addItem(tf.create(Gender.MALE)) ;
+		 else 
+			 this.theMeal.addItem(tf.create(Gender.FEMALE)) ;
+		
 		return this ; 
 	}
 

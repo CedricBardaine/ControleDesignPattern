@@ -28,6 +28,7 @@ public class MenuSelection extends JFrame {
   private JButton bestOf = new JButton("Best Of");
   private JButton maxiBestOf = new JButton("Maxi Best Of");
   private JButton golden = new JButton("Golden");
+  private JButton happy = new JButton("Happy M");
 
   private JButton burger1 = new JButton("Big Mac");
   private JButton burger2 = new JButton("Royal Deluxe");
@@ -44,7 +45,7 @@ public class MenuSelection extends JFrame {
 
   public MenuSelection() {
     this.setTitle("Menu");
-    this.setSize(800, 400);
+    this.setSize(1000, 400);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     bindActions();
@@ -62,6 +63,7 @@ public class MenuSelection extends JFrame {
     containerType.add(bestOf);
     containerType.add(maxiBestOf);
     containerType.add(golden) ; 
+    containerType.add(happy) ; 
     container.add(containerType);
 
     JPanel containerBurger = new JPanel();
@@ -125,6 +127,16 @@ public class MenuSelection extends JFrame {
 			  TF_infos.setText(" Vous preparez maintenant un nouveau menu Golden");
 			  theMealBuilder = new MealBuilder();
 			  theMealBuilder.prepareGolden() ;
+		  }
+	  });
+	  
+	  happy.addActionListener(new ActionListener() {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  System.out.println("- Vous preparez maintenant un nouveau Happy Meal");
+			  TF_infos.setText(" Vous preparez maintenant un nouveau Happy Meal");
+			  theMealBuilder = new MealBuilder();
+			  theMealBuilder.prepareHappy() ;
 		  }
 	  });
 	  
