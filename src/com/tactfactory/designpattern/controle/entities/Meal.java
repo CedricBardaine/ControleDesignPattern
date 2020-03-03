@@ -1,5 +1,6 @@
 package com.tactfactory.designpattern.controle.entities;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,14 +45,35 @@ public class Meal {
 	  }
 	  return ret ; 
   }
+  public String getShowItemsWithTVA() {
+	  String ret = "" ; 
+	  DecimalFormat df = new DecimalFormat("0.00");
+	  
+	  for (Item item : items) {
+		  float itemPrice = item.price() ; 
+		  float itemTVACost = itemPrice*20/100  ; 
+		  float itemWithTVA = (float) (Math.round( (itemPrice+itemTVACost) * 100.0) / 100.0); 
+				  
+		  ret += " Item : " + item.name() +"\r\n"
+				  + " , Packing : " + item.packing().pack() +"\r\n"
+				  + " , Price : " + itemPrice + " + "+ itemTVACost+" ("+ itemWithTVA +")"  +"\r\n" ;
+	  }
+	  return ret ; 
+  }
   
   public float getTotalPrice() {
 	  float ret = 0 ; 
 	  
-	  for (Item item : items) {
+	  for (Item item : items) 
 		ret += item.price() ;
-	}
+	  return ret ; 
+  }
+  public float getTotalPriceWithTVA() {
+	  float ret = 0 ; 
 	  
+	  for (Item item : items) {
+		  ret += item.price() + item.price()*20/100 ;		  
+	  }
 	  return ret ; 
   }
 

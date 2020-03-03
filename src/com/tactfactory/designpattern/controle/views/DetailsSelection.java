@@ -67,11 +67,11 @@ public class DetailsSelection extends JFrame {
   }
   
   public void setDetails() {
-	  this.commandDetails.setText(meal.getShowItems() ) ; 
+	  this.commandDetails.setText(meal.getShowItemsWithTVA() ) ; 
 //	  this.price.setText(String.valueOf( meal.getTotalPrice() )); 
 	  DecimalFormat df = new DecimalFormat() ; 
 	  df.setMaximumFractionDigits(2) ; 
-	  this.price.setText( df.format(meal.getTotalPrice()) ); 
+	  this.price.setText( df.format(meal.getTotalPrice()) +" (TVA: "+ df.format(meal.getTotalPrice()*0.2 ) +")"+ " = "+ df.format(meal.getTotalPriceWithTVA() ) ); 
   }
 
   public void setHome(Home home) {
